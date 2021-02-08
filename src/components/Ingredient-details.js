@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
-import './Product-details.css'
-import ProductItem from './Product-item'
+import './Ingredient-details.css'
+import IngredientItem from './Ingredient-item'
 
 import {
     BrowserRouter as Router,
@@ -12,31 +12,31 @@ const DEFAULT_PLACEHOLDER_IMAGE =
 "https://kare.ee/images/no-image.jpg";
 
 
-const ProductsDetails = (props) => {
+const IngredientDetails = (props) => {
 
     const onSelect = () => {
-        props.onSelectProductCallback(props.id);
+        props.onSelectIngredientCallback(props.id);
     }
 
-    const product = 
+    const ingredient = 
         props.image_url === "" ? DEFAULT_PLACEHOLDER_IMAGE : props.image_url;
         return (
-        <div className="product" >
+        <div className="ingredient" >
             <div>
             <Link
-                    to={{ pathname: '/products/'+ props.id}}
+                    to={{ pathname: '/ingredients/'+ props.id}}
                     className="list-group-item"
                     key={props.id}> 
                     <h2>{props.name} </h2>
                     
             </Link>
 
-            <Route path="/products:id" component={ProductItem}/>
+            <Route path="/ingredients:id" component={IngredientItem}/>
 
             <img 
                 width="200"
-                alt={`Product name: ${product.name}`}
-                src={product}
+                alt={`Ingredient name: ${ingredient.name}`}
+                src={ingredient}
             />
             </div>
             <p>{props.description}</p>
@@ -45,4 +45,4 @@ const ProductsDetails = (props) => {
         );
 };
 
-export default ProductsDetails;
+export default IngredientDetails;

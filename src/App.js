@@ -22,6 +22,8 @@ import Products from  './components/Products';
 import ProductItem from  './components/Product-item';
 
 import Ingredients from './components/Ingredients';
+import IngredientItem from  './components/Ingredient-item';
+
 import Analyze  from './components/Analyze';
 import Header  from './components/Header';
 // import Main from './components/Main';
@@ -34,8 +36,6 @@ const App = () => {
 
 
 const PRODUCTS_API_URL = "http://localhost:5000/products"
-// const INGREDIENTS_API_URL = "http://localhost:5000/ingredients"
-
 
 // PRODUCTS 
 const [productsList, setProductsList] = useState([])
@@ -59,7 +59,30 @@ useEffect(() => {
 
 console.log(productsList)
 console.log(selectedProduct)
-// Selected PRODUCTS 
+
+// INGREDIENTS 
+const INGREDIENTS_API_URL = "http://localhost:5000/ingredients"
+
+const [ingredientsList, setIngredientsList] = useState([])
+const [selectedIngredient, setSelectedIngredient] = useState(null)
+
+const onSelectIngredientCallback = (ingredientId) => {
+  setSelectedIngredient(ingredientsList.find((ingredient)=> ingredient.id === ingredientId))
+}
+
+useEffect(() => {
+  axios.get(INGREDIENTS_API_URL)
+    .then((response) => {
+      console.log(response.data)
+      setIngredientsList(response.data);
+    })
+    .catch((error) => {
+      setErrorMessage(error.message);
+    });
+}, []);
+
+console.log(ingredientsList)
+console.log(selectedIngredient)
 
   return (
     <Router className = 'App-main-div'>
@@ -82,8 +105,12 @@ console.log(selectedProduct)
             {/* <ProductItem product = {selectedProduct}/> */}
           </Route>
 
-          <Route path='/ingredients'>
-            <Ingredients  />
+          <Route exact path='/ingredients'>
+          <Ingredients ingredientsList = {ingredientsList} onSelectIngredientCallback ={onSelectIngredientCallback}/>
+          </Route>
+
+          <Route path='/ingredients/:id' component = {IngredientItem}>
+            {/* <ProductItem product = {selectedProduct}/> */}
           </Route>
 
           <Route path='/analyze'>
