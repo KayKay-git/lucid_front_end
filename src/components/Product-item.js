@@ -2,11 +2,13 @@ import React, {useState, useEffect} from 'react';
 // import './Product-details.css'
 import { useParams} from "react-router-dom"
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { Route, Link } from 'react-router-dom';
 import Ingredients from './Ingredients';
+import IngredientItem from './Ingredient-item'
+import {browserHistory} from 'react-router'
 
 const DEFAULT_PLACEHOLDER_IMAGE =
-"https://m.media-amazon.com/images/M/MV5BMTczNTI2ODUwOF5BMl5BanBnXkFtZTcwMTU0NTIzMw@@._V1_SX300.jpg";
+"https://kare.ee/images/no-image.jpg";
 
 const ProductItem = (props) => {
     console.log(props)
@@ -18,30 +20,37 @@ const ProductItem = (props) => {
 
     useEffect(() => {
         axios.get(PRODUCT_API_URL_WITH_ID)
-          .then((response) => {
+        .then((response) => {
             console.log(response.data)
             setProduct(response.data.product);
-          })
-          .catch((error) => {
+        })
+        .catch((error) => {
             setErrorMessage(error.message);
-          });
-      }, []);
+        });
+    }, []);
 
       // will not render unless null 
     if (!product) {
         return null 
     }
 
-    console.log(product)
+    // const handleClick = () => {
+    //         props.onSelectIngredientCallback(props.id);
+    //     }
 
-    // const splitIngredients = product.ingredients.split(';')
-    // console.log(splitIngredients)
-    // const ing = splitIngredients.map((ingredient) => {
-    //     return (
-    //         <Ingredient /> 
-    //     );
-    // });
 
+    // handleClick(e) {
+    //   e.preventDefault();
+    //   alert('you clicked me');
+    //   browserHistory.push('/displaylist');
+    // }
+
+    const splitIngredients = product.ingredients.split(';')
+    console.log(splitIngredients)
+    console.log(props.match.params)
+    // const {id} = props.match.params
+
+    // console.log(ing)
     const productImage = 
         product.image_url === "" ? DEFAULT_PLACEHOLDER_IMAGE : product.image_url;
         return (
@@ -56,9 +65,23 @@ const ProductItem = (props) => {
             />
             </div>
             <p>{product.description}</p>
-            {/* <Link> {ing} </Link> */}
-            <p>{product.ingredients}</p>
+            {/* <p>{product.ingredients}</p> */}
 
+            <span> 
+                {
+                    splitIngredients.map(ingredient => 
+                        <Link  
+                            to={{ 
+                                pathname: `/ingredients/${ingredient.trim()}`,
+                            }}>
+                            {ingredient},
+                            {/* onClick={handleClick} */}
+                        </Link>)
+                }
+            
+            {/* <Route path="/ingredients:id" component={IngredientItem}/> */}
+
+            </span>
         </div>
         );
 };

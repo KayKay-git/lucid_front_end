@@ -6,7 +6,7 @@ import {
     Route,
     Link
       } from 'react-router-dom';
-      
+
 const Products = (props) => {
     const sortedProductsList = props.productsList.sort((a,b) => (a.name > b.name ? 1:-1));
     const productsResponseData = sortedProductsList.map((product) => {

@@ -6,7 +6,7 @@ import {
     BrowserRouter as Router,
     Route,
     Link
-      } from 'react-router-dom';
+    } from 'react-router-dom';
 
 const DEFAULT_PLACEHOLDER_IMAGE =
 "https://kare.ee/images/no-image.jpg";

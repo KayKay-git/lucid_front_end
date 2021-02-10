@@ -14,9 +14,9 @@ const DEFAULT_PLACEHOLDER_IMAGE =
 
 const ProductsDetails = (props) => {
 
-    const onSelect = () => {
-        props.onSelectProductCallback(props.id);
-    }
+    // const onSelect = () => {
+    //     props.onSelectIngredientCallback(props.id);
+    // }
 
     const product = 
         props.image_url === "" ? DEFAULT_PLACEHOLDER_IMAGE : props.image_url;

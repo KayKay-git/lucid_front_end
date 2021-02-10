@@ -20,20 +20,16 @@ import { BrowserRouter as Router, Switch, Route, Link,  useParams } from 'react-
 import Lucid from './components/Lucid';
 import Products from  './components/Products';
 import ProductItem from  './components/Product-item';
-
 import Ingredients from './components/Ingredients';
 import IngredientItem from  './components/Ingredient-item';
-
 import Analyze  from './components/Analyze';
 import Header  from './components/Header';
-// import Main from './components/Main';
 import Signup from './components/Signup';
 import Login  from './components/Login';
 import SearchBar from './components/Searchbar';
 
 
 const App = () => {
-
 
 const PRODUCTS_API_URL = "http://localhost:5000/products"
 
@@ -60,6 +56,9 @@ useEffect(() => {
 console.log(productsList)
 console.log(selectedProduct)
 
+
+//------------------------------------------------------------//
+
 // INGREDIENTS 
 const INGREDIENTS_API_URL = "http://localhost:5000/ingredients"
 
@@ -84,6 +83,8 @@ useEffect(() => {
 console.log(ingredientsList)
 console.log(selectedIngredient)
 
+
+// ------------------------------------------------------------//
   return (
     <Router className = 'App-main-div'>
         <div>
@@ -110,7 +111,7 @@ console.log(selectedIngredient)
           </Route>
 
           <Route path='/ingredients/:id' component = {IngredientItem}>
-            {/* <ProductItem product = {selectedProduct}/> */}
+            {/* <ProductItem product = {selectedIngredient}/> */}
           </Route>
 
           <Route path='/analyze'>

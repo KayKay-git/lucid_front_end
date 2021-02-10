@@ -1,7 +1,7 @@
 import React from "react"
 import { Link } from 'react-router-dom';
 import  SearchBar  from './Searchbar';
-
+import Search from './Search'
 const Header = () => {
     return (
         <div>
@@ -25,6 +25,7 @@ const Header = () => {
             </li>
         </ul>
         <SearchBar />
+        {/* <Search /> */}
         </nav>
     </div>
     )
