@@ -1,47 +1,56 @@
 import React, { useState, useEffect } from "react";
 import axios from 'axios';
+
 import './App.css';
-import 'bootstrap/dist/css/bootstrap.css';
-import '@fortawesome/fontawesome-free/css/all.min.css';
-import 'bootstrap-css-only/css/bootstrap.min.css';
-import 'mdbreact/dist/css/mdb.css';
+
 import { BrowserRouter as Router, Switch, Route, Link,  useParams } from 'react-router-dom';
-
-// import { Lucid } from './components/Lucid';
-// import { Products } from  './components/Products';
-// import { Ingredients } from './components/Ingredients';
-// import { Analyze }  from './components/Analyze';
-// import { Header }  from './components/Header';
-// import { Main } from './components/Main';
-// import { Signup } from './components/Signup';
-// import { Login}  from './components/Login';
-
+// import {routerActions} from 'react-router-redux';
+// import {UserAuthWrapper} from 'redux-auth-wrapper';
 
 import Lucid from './components/Lucid';
 import Products from  './components/Products';
 import ProductItem from  './components/Product-item';
 import Ingredients from './components/Ingredients';
 import IngredientItem from  './components/Ingredient-item';
+import IngredientDetails from './components/Ingredient-details'
 import Analyze  from './components/Analyze';
 import Header  from './components/Header';
 import Signup from './components/Signup';
 import Login  from './components/Login';
+import Logout  from './components/Logout';
+import Profile  from './components/Profile';
+import FooterPage from './components/Footer'
 import SearchBar from './components/Searchbar';
-
+// import Routes from './Routes';
+import SearchPage from './components/SearchPage';
+import Search from './components/Search';
+import SearchProducts from './components/SearchProducts'
+import { useHistory } from "react-router-dom";
+import { Redirect } from 'react-router-dom'
 
 const App = () => {
+
 
 const PRODUCTS_API_URL = "http://localhost:5000/products"
 
 // PRODUCTS 
 const [productsList, setProductsList] = useState([])
 const [selectedProduct, setSelectedProduct] = useState(null)
+const [filteredProdSearch, setFilteredProdSearch] = useState(null)
+
 const [errorMessage, setErrorMessage] = useState(null);
 
 const onSelectProductCallback = (productId) => {
   setSelectedProduct(productsList.find((product)=> product.id === productId))
 }
+//   const history = useHistory();
 
+// const onFilteredProdCallback = (filteredProd) => {
+//   setFilteredProdSearch(filteredProd)
+//   history.push('/products/SearchPage')
+// }
+
+console.log(filteredProdSearch)
 useEffect(() => {
   axios.get(PRODUCTS_API_URL)
     .then((response) => {
@@ -55,7 +64,7 @@ useEffect(() => {
 
 console.log(productsList)
 console.log(selectedProduct)
-
+console.log(filteredProdSearch)
 
 //------------------------------------------------------------//
 
@@ -64,10 +73,14 @@ const INGREDIENTS_API_URL = "http://localhost:5000/ingredients"
 
 const [ingredientsList, setIngredientsList] = useState([])
 const [selectedIngredient, setSelectedIngredient] = useState(null)
+const [filteredIngSearch, setFilteredIngSearch] = useState(null)
 
 const onSelectIngredientCallback = (ingredientId) => {
   setSelectedIngredient(ingredientsList.find((ingredient)=> ingredient.id === ingredientId))
 }
+// const onFilteredIngCallback = (filteredIng) => {
+//   setFilteredIngSearch(filteredIng)
+// }
 
 useEffect(() => {
   axios.get(INGREDIENTS_API_URL)
@@ -83,31 +96,39 @@ useEffect(() => {
 console.log(ingredientsList)
 console.log(selectedIngredient)
 
-
-// ------------------------------------------------------------//
   return (
     <Router className = 'App-main-div'>
         <div>
           <Header />
-
-        </div>
-      
+      </div>
         <Switch>
 
           <Route exact path='/'>
-            <Lucid />
+            <Lucid productsList = {productsList} ingredientsList = {ingredientsList}/>
+          </Route>
+
+          <Route exact path='/profile'>
+            <Profile />
+            {/* <Profile component={UserIsAuthenticated(Profile)} /> */}
           </Route>
 
           <Route exact path='/products'>
-            <Products productsList = {productsList} onSelectProductCallback ={onSelectProductCallback}/>
+            <Products productsList = {productsList} onSelectProductCallback ={onSelectProductCallback} />
           </Route>
 
           <Route path='/products/:id' component = {ProductItem}>
             {/* <ProductItem product = {selectedProduct}/> */}
           </Route>
 
+
+          {/* <Route path='/products/SearchPage' component = {SearchPage}>
+            <SearchPage filteredProdSearch = {filteredProdSearch} fiteredIngSearch = {filteredIngSearch}/>
+          </Route> */}
+
+
           <Route exact path='/ingredients'>
-          <Ingredients ingredientsList = {ingredientsList} onSelectIngredientCallback ={onSelectIngredientCallback}/>
+            <Ingredients ingredientsList = {ingredientsList} onSelectIngredientCallback ={onSelectIngredientCallback}/>
+            {/* <SearchIngredients onFilteredIngCallback = {onFilteredIngCallback}/> */}
           </Route>
 
           <Route path='/ingredients/:id' component = {IngredientItem}>
@@ -122,101 +143,27 @@ console.log(selectedIngredient)
             <Signup />
           </Route>
 
-          <Route path='/login'>
-            <Login />
+          <Route path='/login' component = {Login}>
           </Route>
 
-        </Switch>
-    </Router>
+          <Route path='/SearchPage' component = {SearchPage}> 
+            {/* <SearchBar filteredProdSearch = {filteredProdSearch} fiteredIngSearch = {filteredIngSearch}/> */}
+            {/* <SearchProducts onFilteredProdCallback = {onFilteredProdCallback} /> */}
+            <SearchProducts/>
 
+          </Route> 
+
+          {/* <Route path='/SearchPage' component={SearchPage}>
+          </Route> */}
+
+        </Switch>
+    <div classsName = "footer">       
+       <FooterPage />
+    </div>
+    </Router>
+   
   );
 }
 
+
 export default App;
-
-
-
-
-{/* <Switch>
-
-        <Route path="/">
-          <Lucid />
-        </Route>
-
-        <Route path="/products">
-          <Products productsList = {productsList}/>
-        </Route>
-
-        <Route path="/ingredients">
-          <Ingredients />
-        </Route>
-
-        <Route path="analyze">
-          <Analyze />
-        </Route>
-
-        <Route path="signup">
-          <Signup />
-        </Route>
-
-        <Route path="login">
-          <Login />
-        </Route>
-
-    </Switch> */}
-
-// const App = () => {
-//   const [loading, setLoading] = useState(true);
-//   const [products, setProducts] = useState([]);
-//   const [errorMessage, setErrorMessage] = useState(null);
-
-//     useEffect(() => {
-//     fetch(PRODUCTS_API_URL)
-//       .then(response => response.json())
-//       .then(jsonResponse => {
-//         setProducts(jsonResponse.Search);
-//         setLoading(false);
-//       });
-//   }, []);
-
-//     const search = searchValue => {
-//     setLoading(true);
-//     setErrorMessage(null);
-
-//     fetch(`https://www.omdbapi.com/?s=${searchValue}&apikey=4a3b711b`)
-//       .then(response => response.json())
-//       .then(jsonResponse => {
-//         if (jsonResponse.Response === "True") {
-//           setProducts(jsonResponse.Search);
-//           setLoading(false);
-//         } else {
-//           setErrorMessage(jsonResponse.Error);
-//           setLoading(false);
-//         }
-//       });
-//   	};
-
-    
-//     return (
-//      <div className="App">
-//       <Header text="HOOKED" />
-//       <SearchBar search={search} />
-//       <Main />
-
-//       <p className="App-intro">Sharing a few of our favourite Products</p>
-//       <div className="products">
-//         {loading && !errorMessage ? (
-//          <span>loading...</span>
-//          ) : errorMessage ? (
-//           <div className="errorMessage">{errorMessage}</div>
-//         ) : (
-//           products.map((movie, index) => (
-//             <Movie key={`${index}-${movie.Title}`} movie={movie} />
-//           ))
-//         )}
-//       </div>
-//     </div>
-//   );
-
-
-// }

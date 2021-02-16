@@ -1,7 +1,5 @@
-.main-div-products{
-    /* background-color:rgba(245, 184, 199, 0.644); */
-
-
+.main-div-ingredients{
+    /* background-color:rgba(243, 214, 219, 0.26); */
     
 }
 .header h1 {
@@ -28,11 +26,14 @@
 
 
 
-.products {
+.ingredients {
     display: flex;
     /* flex-wrap: wrap; */
     align-items: flex-start;
     flex-direction: row;
     max-height: 100vh;
     align-items: stretch; 
+    justify-content: center;
+    background-color:#a3e6c14f;
+   
 }

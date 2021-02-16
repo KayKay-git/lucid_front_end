@@ -1,17 +1,16 @@
 import React from "react";
-import ProductsDetails from './Product-details'
+import ProductsDetailsPanel from './Product-details-panel'
 import ProductItem from './Product-item'
-import {
-    BrowserRouter as Router,
-    Route,
-    Link
-      } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import SearchProducts from './SearchProducts'
+import SearchPage from "./SearchPage";
+import './Products.css';
 
 const Products = (props) => {
     const sortedProductsList = props.productsList.sort((a,b) => (a.name > b.name ? 1:-1));
     const productsResponseData = sortedProductsList.map((product) => {
         return ( 
-        < ProductsDetails
+        < ProductsDetailsPanel
             key = {product.id}
             id = {product.id}
             name = {product.name}
@@ -23,13 +22,14 @@ const Products = (props) => {
             );
     });
 
-
     return (
-        <div className = 'products'>
-            <h1>products</h1>
-
-            {productsResponseData}
-            <Link to={`/products/${props.id}`}>{props.name}</Link>
+        <div className = 'main-div-products'>
+            <div className = "header"> 
+                <h1>products</h1>
+                <section className = "header-search"><SearchProducts products= {productsResponseData} onFilteredProdCallback = {props.onFilteredProdCallback} /></section>
+            </div>
+            <div className = "products">{productsResponseData}</div>
+            {/* <Link to={`/products/${props.id}`}>{props.name}</Link> */}
 
         </div>
     )

@@ -1,0 +1,17 @@
+.footer {
+position: fixed;
+left: 0;
+bottom: 0;
+width: 100%;
+background-color: antiquewhite;
+color: white;
+text-align: center;
+}
+
+p {
+    color: black
+}
+
+p a {
+    color: brown;
+}

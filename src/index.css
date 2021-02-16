@@ -5,6 +5,14 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* background-image: url('https://webstockreview.net/images/body-clipart-skin-16.jpg'); */
+  background-image: url('https://image.freepik.com/free-vector/hands-holding-skin-care-cosmetics-products-bottles-lotion-cream-serum_131454-282.jpg');
+
+  position: dynamic;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
 }
 
 code {

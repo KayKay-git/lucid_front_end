@@ -1,0 +1,31 @@
+.profile-header {
+    margin:auto;
+    line-height:30px;
+    vertical-align:middle;
+    padding: 20px ;
+    text-align: center;
+    background-color:#a3e6c14f;
+    height : '100vh';
+
+}
+.profile-header h1{
+
+    margin:auto;
+    line-height:51px;
+    vertical-align:middle;
+    padding: 20px ;
+    text-align: center;
+
+}
+
+.user-profile {
+
+    margin:auto;
+    line-height:30px;
+    vertical-align:middle;
+    padding: 20px ;
+    text-align: center;
+    height : '100vh';
+
+
+}

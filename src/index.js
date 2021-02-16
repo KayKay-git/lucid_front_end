@@ -4,19 +4,14 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
-
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"></link>
-// ReactDOM.render(
-//   <React.StrictMode>
-//     <App />
-//   </React.StrictMode>,
-//   document.getElementById('root')
-// );
+import { GoogleAuthProvider } from './components/GoogleAuth';
 
 ReactDOM.render((
-  <BrowserRouter>
-    <App />
-  </BrowserRouter>
+  <GoogleAuthProvider>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </GoogleAuthProvider>
 ), document.getElementById('root'));
 
 // If you want to start measuring performance in your app, pass a function

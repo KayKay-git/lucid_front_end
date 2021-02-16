@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import './Product-details.css'
+import './Product-details-panel.css'
 import ProductItem from './Product-item'
 
 import {
@@ -12,7 +12,7 @@ const DEFAULT_PLACEHOLDER_IMAGE =
 "https://kare.ee/images/no-image.jpg";
 
 
-const ProductsDetails = (props) => {
+const ProductsDetailsPanel = (props) => {
 
     // const onSelect = () => {
     //     props.onSelectIngredientCallback(props.id);
@@ -44,4 +44,4 @@ const ProductsDetails = (props) => {
         );
 };
 
-export default ProductsDetails;
+export default ProductsDetailsPanel;

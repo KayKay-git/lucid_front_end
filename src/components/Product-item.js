@@ -1,3 +1,4 @@
+import './Product-item.css'
 import React, {useState, useEffect} from 'react';
 // import './Product-details.css'
 import { useParams} from "react-router-dom"
@@ -45,43 +46,36 @@ const ProductItem = (props) => {
     //   browserHistory.push('/displaylist');
     // }
 
-    const splitIngredients = product.ingredients.split(';')
+    const splitIngredients = product.ingredients.split(',')
     console.log(splitIngredients)
     console.log(props.match.params)
     // const {id} = props.match.params
 
     // console.log(ing)
-    const productImage = 
-        product.image_url === "" ? DEFAULT_PLACEHOLDER_IMAGE : product.image_url;
+    const productImage = product.image_url === "" ? DEFAULT_PLACEHOLDER_IMAGE : product.image_url;
         return (
-
-        <div className="product">
-            <h2>{product.name}</h2>
-            <div>
-            <img
+        <div className="product-item" >
+            <h2 className='text-center'>{product.name}</h2>
+            <img className='product-img'
                 width="200"
                 alt={`Product name: ${product.name}`}
                 src={productImage}
             />
-            </div>
+            <h2 className='text-center'>description</h2>
             <p>{product.description}</p>
-            {/* <p>{product.ingredients}</p> */}
-
-            <span> 
+            <h2 className='text-center'>ingredients list</h2>
+            <p className = 'ingredient-links'> 
                 {
-                    splitIngredients.map(ingredient => 
-                        <Link  
-                            to={{ 
-                                pathname: `/ingredients/${ingredient.trim()}`,
-                            }}>
-                            {ingredient},
-                            {/* onClick={handleClick} */}
-                        </Link>)
+                splitIngredients.map(ingredient => 
+                    <Link  
+                        to={{ 
+                            pathname: `/ingredients/${ingredient.trim()}`,
+                        }}>
+                        {ingredient},
+                    </Link>
+                    )
                 }
-            
-            {/* <Route path="/ingredients:id" component={IngredientItem}/> */}
-
-            </span>
+            </p>
         </div>
         );
 };

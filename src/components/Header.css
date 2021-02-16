@@ -1,0 +1,42 @@
+
+.navbar-div {
+  justify-content: center;
+  
+}
+
+.navbar {
+    /* background-image: url('https://png.pngtree.com/thumb_back/fw800/background/20190925/pngtree-linear-cartoon-cosmetics-surround-beige-white-square-background-image_316715.jpg'); */
+    background-color:white;
+    /* justify-content: center; */
+
+}
+
+.nav-item {
+    background-color: antiquewhite;
+
+}
+
+/* .navbar-brand {
+    background-color: pink;
+   
+} */
+.navbar-nav {
+    position: relative;
+    left: 50%;
+    transform: translatex(-70%);
+      justify-content: center;
+
+}
+
+  /* .google-btn {
+    position: absolute;
+    right: -620px;
+    top: -4px;
+}
+   */
+
+  /* .navbar-nav.navbar-center {
+    position: absolute;
+    left: 50%;
+    transform: translatex(-50%);
+} */

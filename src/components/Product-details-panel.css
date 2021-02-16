@@ -1,0 +1,35 @@
+.products {
+    display: flex;
+    padding: 5px; /* creates the border padding darker color*/ 
+    grid-column-gap: 15px;
+    grid-row-gap: 5px;
+
+  }
+
+ 
+ .product-card {
+    /* box-shadow: 5px rgba(0, 0, 0, 0.15); */
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    flex-direction: row;
+    max-height: 50vh;
+    align-items: stretch; 
+    max-width: 200px;
+
+  } 
+ 
+img {
+    margin: 10px;
+ /* box-shadow: 3px 3px 8px 0px rgba(0,0,0,0.3);    */
+    max-width: 10vw;
+  }
+
+  .list-group-item  {
+    /* margin-top: auto; */
+      grid-template-columns: repeat(3, 1fr);
+      /* box-shadow: 3px 3px 8px 0px rgba(0,0,0,0.3);   */
+  }
+  
+ 
+

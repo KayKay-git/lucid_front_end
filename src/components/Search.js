@@ -4,16 +4,22 @@
 // import { useState, useEffect } from "react";
 // import SearchDetail from './Search-results'
 
-// const Search = () => {
+// const Search = (props) => {
+
+//     const [products, ingredients] = props 
+//     const [filteredProducts, setFilteredProducts] = useState([]);
+//     const [filteredIngredients, setFilteredIngredients] = useState([]);
+
+
 //     const [products, setProducts] = useState([]);
+//     const [ingredients, setIngredients] = useState([]);
 //     const [loading, setLoading] = useState(false);
 //     const [search, setSearch] = useState("");
 //     const [filteredProducts, setFilteredProducts] = useState([]);
   
 //     useEffect(() => {
 //       setLoading(true);
-//       axios
-//         .get("https://restproducts.eu/rest/v2/all")
+//       axios.get("https://restproducts.eu/rest/v2/all")
 //         .then((res) => {
 //           setProducts(res.data);
 //           setLoading(false);

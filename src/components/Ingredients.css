@@ -1,4 +1,4 @@
-.main-div-products{
+.main-div-ingredients{
     /* background-color:rgba(245, 184, 199, 0.644); */
 
 
@@ -28,7 +28,7 @@
 
 
 
-.products {
+.ingredients {
     display: flex;
     /* flex-wrap: wrap; */
     align-items: flex-start;

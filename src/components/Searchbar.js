@@ -1,79 +1,69 @@
-import React, { useEffect, useState } from "react";
-import { MDBCol, MDBIcon, MDBFormInline } from "mdbreact";
-import './Searchbar.css';
-import axios from 'axios';
-import PropTypes from 'prop-types';
-import SearchResult from './SearchResult';
+// import React, { useEffect, useState } from "react";
+// import { MDBCol, MDBIcon, MDBFormInline } from "mdbreact";
+// import './Searchbar.css';
+// import axios from 'axios';
+// import PropTypes from 'prop-types';
+// import SearchResult from './SearchResult';
+// import { withRouter, Link } from 'react-router-dom';
+// import SearchPage from './SearchPage';
+
+// const SearchBar = (props) => {
+
+//   console.log(props.products)
+//   const [query, setQuery] = useState('')
+//   const [filteredComponents, setFilteredComponents] = useState([])
 
 
-const SearchBar = (props) => {
+//   const onInputChange = (event) => {
+//       setQuery(event.target.value);
+//   }
 
-  const [searchTerm, setSearchTerm] = useState('')
-  const [searchResults, setSearchResults] = useState([])
-  const [errorMessage, setErrorMessage] = useState(null);
-  const [searchComponents, setSearchComponents] = useState([])
-
-  const onInputChange = (event) => {
-    setSearchTerm(event.target.value);
-  }
-
-  const SEARCH_URL = `http://localhost:5000/products`
-  useEffect(() => {
-    axios.get(SEARCH_URL, {
-       params: {
-           query: searchTerm
-       }
-       })
-       .then((response) => { 
-           setSearchResults(response.data);   // update state
-       })
-       .catch((error) => {
-           setErrorMessage(error.message);
-       });
-   }, []);
-   
-  const onSubmitForm = (event) => {
-    event.preventDefault();
-
-    // on submit, we make a call to the API using the searchTerm entered. 
-    // const SEARCH_URL = `http://localhost:5000/products`
-
-        const searchComponents = searchResults.map((product) => {
-        return(< SearchResult 
-            key={product.id}
-            id={product.id}
-            name={product.name} 
-            description={product.description}
-            image_url={product.image_url}
-            ingredients={product.ingredients}
-        />);
-        });
-        setSearchComponents(searchComponents)
-    } 
+//   const filter = (data, term) => {
+//       if (!term) {
+//           return data;
+//       }
   
+//       return data.filter((item) => {
+//           console.log(item)
+//           const searchName = item.props.name.toLowerCase();
+//           return searchName.includes(term);
+//       });
+//   };
+  
+//   const onSubmitForm = (e) => {
+//       e.preventDefault();
+//       setFilteredComponents(filter(props.products, query))
+//       } 
 
-  return (
-    <div className="searchbar">
-        <form className = 'searchform' onSubmit={onSubmitForm}>
-            <input placeholder="Search for..." onChange={onInputChange} value={searchTerm} />
-            <input className="submit" type="submit" value="Submit" />
-        </form>
-      <section> {searchComponents} </section>
-    </div>
-  );
-}
+//   return (
+//       <div className="searchbar">
+//           <form className = 'searchform' onSubmit={onSubmitForm}>
+//               <input placeholder="Search for..." onChange={onInputChange} value={query} />
+//               <input className="submit" type="submit" value="Search" />
+//           </form>
 
+//       {/* {filteredComponents} */}
 
-{/* <MDBCol md="10">
-<MDBFormInline className="md-form" onSubmit={onSubmitForm}>
-    <input className="form-control form-control-sm ml-3 w-75"
-            type="text" 
-            placeholder="Search products or ingredients" 
-            aria-label="Search" 
-            onChange={onInputChange} 
-            value={searchTerm} />
-    <MDBIcon icon="search" type="submit" value="Submit"/>
-</MDBFormInline>
-</MDBCol> */}
-export default SearchBar;
+//       {filteredComponents.map((product) => (
+          
+//           <span key={product.props.id}>
+
+//               <Link to = {{ pathname:`/products/${product.props.id}`}}>
+//                   <h4>{product.props.name}</h4>
+//               </Link>
+//               <h2>Search Results for {query}</h2>
+
+//               <img 
+//                   width="200"
+//                   alt={`Product name: ${product.props.name}`}
+//                   src={product.props.image_url}
+//               />
+//           </span>
+//       ))}
+//           {/* <SearchPage searchComponents = {searchComponents} /> */}
+//       </div>
+//   );
+// }
+
+// export default withRouter(SearchBar);
 
