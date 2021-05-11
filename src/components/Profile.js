@@ -21,11 +21,6 @@ const Profile = () => {
             <img src={googleUser.profileObj.imageUrl} alt="Avatar." />
             </div>
         )}
-
-        {/* <button onClick={() => signIn()} style={{ marginRight: '1rem' }}>
-            Sign in
-        </button>
-        <button onClick={signOut}>Sign Out</button> */}
       </div>
     )
 };
