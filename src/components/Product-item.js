@@ -35,17 +35,6 @@ const ProductItem = (props) => {
         return null 
     }
 
-    // const handleClick = () => {
-    //         props.onSelectIngredientCallback(props.id);
-    //     }
-
-
-    // handleClick(e) {
-    //   e.preventDefault();
-    //   alert('you clicked me');
-    //   browserHistory.push('/displaylist');
-    // }
-
     const splitIngredients = product.ingredients.split(',')
     console.log(splitIngredients)
     console.log(props.match.params)
