@@ -34,22 +34,7 @@ const Header = () => {
             <li className="nav-item">
                 <button type="button"  className= "btn draw-border"><Link className="nav-link" to="/ingredients">ingredients</Link></button>
             </li>
-            {/* <li className="nav-item">
-                <button className= "btn draw-border"><Link className="nav-link" to="/analyze">analyze</Link></button>
-            </li> */}
-            {/* <li className="nav-item">
-                <button className= "btn draw-border"><Link className="nav-link" to="/profile">Profile</Link></button>
-            </li> */}
-
-            {/* <div className = 'google-btn nav-item '> 
-                    <Link className="nav-link" to="/profile">user link</Link>
-                     {isSignedIn ? <GoogleLogoutButton /> : <GoogleLoginButton /> }
-                    
-                </div>  */}
-
-            {/* <li className="nav-item">
-                <button className= "btn draw-border"><Link className="nav-link" to="/signup">Sign Up</Link></button>
-            </li> */}
+           
              {isSignedIn ? 
             <li className="nav-item">
                  <button type="button"  className= "btn draw-border"><Link className="nav-link" to="/profile">User Profile</Link></button>
@@ -63,30 +48,11 @@ const Header = () => {
             <button  type="button"  className= "btn draw-border"><Link className="nav-link" to="/profile">Sign Up</Link></button>
             </li> 
             } 
-
-
-
-
-            {/* <Logout /> 
-
-                <div className = 'google-btn nav-item '> 
-                    <Link className="nav-link" to="/profile">user link</Link>
-                     {isSignedIn ? <GoogleLogoutButton /> : <GoogleLoginButton /> }
-                    
-                </div> 
-
-       
-            {/* <li className="nav-item">
-                <button className= "btn draw-border"><Link className="nav-link" to="/login">Login</Link></button>
-            </li> */}
           
         </ul>
 
     
-       
-
-        {/* <SearchBar /> */}
-        {/* <Search /> */}
+ 
         </nav>
 
     </div>
