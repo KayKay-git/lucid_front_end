@@ -1,6 +1,5 @@
 import React from 'react';
-// import { BrowserRouter as Router, Switch, Route, Link,  useParams } from 'react-router-dom';
-// import Lucid from './Lucid'
+
 import { useGoogleLogin } from 'react-use-googlelogin';
 import { useGoogleAuth } from "./GoogleAuth";
 import GoogleLoginButton from './GoogleLoginButton'
